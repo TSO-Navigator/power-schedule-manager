@@ -1,11 +1,11 @@
 import React from 'react';
-import TSOScheduleManager from './components/TSOScheduleManager';
+import MainNavigation from './components/MainNavigation';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <TSOScheduleManager />
+      <MainNavigation />
     </div>
   );
 }

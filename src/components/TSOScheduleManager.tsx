@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronDown, Building2, Globe, Calendar, BarChart3, Users, Bell, CheckCircle, AlertTriangle, Clock } from 'lucide-react';
+import { ChevronRight, ChevronDown, Building2, Globe, Calendar, BarChart3, CheckCircle } from 'lucide-react';
 
 const TSOScheduleManager: React.FC = () => {
   const [expanded, setExpanded] = useState<{[key: string]: boolean}>({ 

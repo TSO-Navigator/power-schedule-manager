@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { Home, MessageSquare, Edit3, BarChart3, Settings } from 'lucide-react';
 import TSOScheduleManager from './TSOScheduleManager';
 import CommunicationOverview from './CommunicationOverview';
+import ScheduleEditor from './ScheduleEditor';
+import '../styles/components/MainNavigation.css';
 
 const MainNavigation: React.FC = () => {
   const [activeView, setActiveView] = useState('dashboard');
 
   const navigationItems = [
-    { id: 'dashboard', name: 'TSO Navigator', icon: <Home size={20} />, description: 'Hauptübersicht' },
+    { id: 'dashboard', name: 'Scheduling Overview', icon: <Home size={20} />, description: 'Hauptübersicht' },
     { id: 'communication', name: 'Communication', icon: <MessageSquare size={20} />, description: 'Message Tracking' },
     { id: 'editor', name: 'Schedule Editor', icon: <Edit3 size={20} />, description: 'Fahrplan bearbeiten' },
-    { id: 'analytics', name: 'Analytics', icon: <BarChart3 size={20} />, description: 'Auswertungen' },
-    { id: 'settings', name: 'Settings', icon: <Settings size={20} />, description: 'Einstellungen' }
+    { id: 'settings', name: 'Settings', icon: <Settings size={20} />, description: 'Einstellungen' },
   ];
 
   const renderContent = () => {
@@ -21,9 +22,7 @@ const MainNavigation: React.FC = () => {
       case 'communication':
         return <CommunicationOverview />;
       case 'editor':
-        return <EditorPlaceholder />;
-      case 'analytics':
-        return <AnalyticsPlaceholder />;
+        return <ScheduleEditor />;
       case 'settings':
         return <SettingsPlaceholder />;
       default:
@@ -56,7 +55,7 @@ const MainNavigation: React.FC = () => {
               <Home size={18} />
             </div>
             <h1 style={{ fontSize: '20px', fontWeight: '700', margin: 0 }}>
-              TSO Management Platform
+              Power Schedule Manager
             </h1>
           </div>
 
@@ -109,57 +108,6 @@ const MainNavigation: React.FC = () => {
     </div>
   );
 };
-
-// Placeholder Components
-const EditorPlaceholder: React.FC = () => (
-  <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8fafc' }}>
-    <div style={{ textAlign: 'center', maxWidth: '500px', padding: '48px' }}>
-      <Edit3 size={64} style={{ color: '#10b981', margin: '0 auto 24px' }} />
-      <h2 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '16px', color: '#1f2937' }}>
-        Schedule Editor
-      </h2>
-      <p style={{ color: '#6b7280', marginBottom: '24px', lineHeight: '1.6' }}>
-        Vollständiger Editor für alle 96 15-Minuten-Intervalle mit automatischer Balance-Prüfung 
-        und ESS 2.3 XML-Export.
-      </p>
-      <div style={{ 
-        background: '#d1fae5', 
-        border: '1px solid #86efac', 
-        borderRadius: '8px', 
-        padding: '16px',
-        fontSize: '14px',
-        color: '#065f46'
-      }}>
-        ✏️ <strong>Features:</strong> 96 Intervalle, Balance Check, Business Types A01-A85
-      </div>
-    </div>
-  </div>
-);
-
-const AnalyticsPlaceholder: React.FC = () => (
-  <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8fafc' }}>
-    <div style={{ textAlign: 'center', maxWidth: '500px', padding: '48px' }}>
-      <BarChart3 size={64} style={{ color: '#8b5cf6', margin: '0 auto 24px' }} />
-      <h2 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '16px', color: '#1f2937' }}>
-        Analytics Dashboard
-      </h2>
-      <p style={{ color: '#6b7280', marginBottom: '24px', lineHeight: '1.6' }}>
-        Umfassende Auswertungen und Statistiken für alle TSO-Operationen mit 
-        historischen Trends und Performance-Metriken.
-      </p>
-      <div style={{ 
-        background: '#f3e8ff', 
-        border: '1px solid #c4b5fd', 
-        borderRadius: '8px', 
-        padding: '16px',
-        fontSize: '14px',
-        color: '#5b21b6'
-      }}>
-        📊 <strong>Planned:</strong> Charts, Trends, TSO-Vergleiche, Export-Funktionen
-      </div>
-    </div>
-  </div>
-);
 
 const SettingsPlaceholder: React.FC = () => (
   <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8fafc' }}>

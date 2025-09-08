@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft, CheckCircle, AlertTriangle, Clock, MessageSquare, RefreshCw } from 'lucide-react';
+import '../styles/components/CommunicationOverview.css';
 
 interface CommunicationMessage {
   id: string;

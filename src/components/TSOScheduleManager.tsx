@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronRight, ChevronDown, Building2, Globe, Calendar, BarChart3, CheckCircle } from 'lucide-react';
+import '../styles/components/TSOScheduleManager.css';
 
 const TSOScheduleManager: React.FC = () => {
   const [expanded, setExpanded] = useState<{[key: string]: boolean}>({ 
@@ -50,9 +51,9 @@ const TSOScheduleManager: React.FC = () => {
         <div className="tso-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Globe size={20} />
-            <h1 className="tso-title">TSO Schedule Manager</h1>
+            <h1 className="tso-title">Power Grid</h1>
           </div>
-          <p className="tso-subtitle">Fahrplanmanagement System</p>
+          <p className="tso-subtitle">Balance</p>
         </div>
 
         <div className="tso-nav">

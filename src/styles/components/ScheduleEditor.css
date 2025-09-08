@@ -735,14 +735,28 @@
 
 .intervals-input {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-  gap: 4px;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 8px;
   max-height: 240px;
   overflow: auto;
   padding: 12px;
   background: #f8fafc;
   border-radius: 6px;
   border: 1px solid #e5e7eb;
+}
+
+.interval-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.interval-time {
+  font-size: 10px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-align: center;
 }
 
 .interval-input {

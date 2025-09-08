@@ -715,7 +715,7 @@ const ScheduleEditor: React.FC<ScheduleEditorProps> = ({ onScheduleSave }) => {
   const renderWelcomeMessage = () => (
     <div className="welcome-message">
       <div className="welcome-message__content">
-        <h2>Welcome to Power Schedule Manager</h2>
+        <h2>Welcome to TSO Schedule Manager</h2>
         <p>Select a Balance Group from the navigation to start creating schedules.</p>
         <div className="welcome-message__steps">
           <div className="step">
@@ -1028,20 +1028,28 @@ const ScheduleEditor: React.FC<ScheduleEditorProps> = ({ onScheduleSave }) => {
                       <div className="intervals-grid">
                         <label>96 Quarter-Hour Intervals (MW):</label>
                         <div className="intervals-input">
-                          {position.intervals.map((value, intervalIndex) => (
-                            <input
-                              key={intervalIndex}
-                              type="number"
-                              value={value}
-                              onChange={(e) => {
-                                const newIntervals = [...position.intervals];
-                                newIntervals[intervalIndex] = parseFloat(e.target.value) || 0;
-                                updatePosition(position.id, { intervals: newIntervals });
-                              }}
-                              className="interval-input"
-                              step="0.1"
-                            />
-                          ))}
+                          {position.intervals.map((value, intervalIndex) => {
+                            const hours = Math.floor(intervalIndex / 4);
+                            const minutes = (intervalIndex % 4) * 15;
+                            const timeLabel = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                            
+                            return (
+                              <div key={intervalIndex} className="interval-wrapper">
+                                <div className="interval-time">{timeLabel}</div>
+                                <input
+                                  type="number"
+                                  value={value}
+                                  onChange={(e) => {
+                                    const newIntervals = [...position.intervals];
+                                    newIntervals[intervalIndex] = parseFloat(e.target.value) || 0;
+                                    updatePosition(position.id, { intervals: newIntervals });
+                                  }}
+                                  className="interval-input"
+                                  step="0.1"
+                                />
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
